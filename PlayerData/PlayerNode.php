@@ -187,6 +187,97 @@ class PlayerNode{
         return($this->iPlayerTeamDefibs);
     }
 
+    // Set/get the number of times a player has revived an incapacitated team member
+    public function setTeamRevives($_iPlayerTeamRevives){
+        if(is_int($_iPlayerTeamRevives)){
+            $this->iPlayerTeamRevives = $_iPlayerTeamRevives;
+            return true;
+        }
+        else return false;
+    }
+
+    public function getTeamRevives(){
+        return($this->iPlayerTeamRevives);
+    }
+
+    // Set/get the number of times a player has killed a spitter
+    public function setKillsSpitter($_iPlayerKillsSpitter){
+        if(is_int($_iPlayerKillsSpitter)){
+            $this->iPlayerKillsSpitter = $_iPlayerKillsSpitter;
+            return true;
+        }
+        else return false;
+    }
+
+    public function getKillsSpitter(){
+        return($this->iPlayerKillsSpitter);
+    }
+
+    // Set/get the number of times a player has killed a charger
+    public function setKillsCharger($_iPlayerKillsCharger){
+        if(is_int($_iPlayerKillsCharger)){
+            $this->iPlayerKillsCharger = $_iPlayerKillsCharger;
+            return true;
+        }
+        else return false;
+    }
+
+    public function getKillsCharger(){
+        return($this->iPlayerKillsCharger);
+    }
+
+    // Set/get the number of times a player has killed a smoker
+    public function setKillsSmoker($_iPlayerKillsSmoker){
+        if(is_int($_iPlayerKillsSmoker)){
+            $this->iPlayerKillsSmoker = $_iPlayerKillsSmoker;
+            return true;
+        }
+        else return false;
+    }
+
+    public function getKillsSmoker(){
+        return($this->iPlayerKillsSmoker);
+    }
+
+    // Set/get the number of times a player has killed a hunter
+    public function setKillsHunter($_iPlayerKillsHunter){
+        if(is_int($_iPlayerKillsHunter)){
+            $this->iPlayerKillsHunter = $_iPlayerKillsHunter;
+            return true;
+        }
+        else return false;
+    }
+
+    public function getKillsHunter(){
+        return($this->iPlayerKillsHunter);
+    }
+
+    // Set/get the number of times a player has killed a jockey
+    public function setKillsJockey($_iPlayerKillsJockey){
+        if(is_int($_iPlayerKillsJockey)){
+            $this->iPlayerKillsJockey = $_iPlayerKillsJockey;
+            return true;
+        }
+        else return false;
+    }
+
+    public function getKillsJockey(){
+        return($this->iPlayerKillsJockey);
+    }
+
+    // Set/get the number of times a player has killed a boomer
+    public function setKillsBoomer($_iPlayerKillsBoomer){
+        if(is_int($_iPlayerKillsBoomer)){
+            $this->iPlayerKillsBoomer = $_iPlayerKillsBoomer;
+            return true;
+        }
+        else return false;
+    }
+
+    public function getKillsBoomer(){
+        return($this->iPlayerKillsBoomer);
+    }
+
     // Set/get the next node
     public function setNext($_pNext){
         $this->pNext = $_pNext;
