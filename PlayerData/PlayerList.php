@@ -1,4 +1,5 @@
 <?php
+require("PlayerNode.php");
 
 class PlayerList{
     private $pList;
@@ -7,18 +8,18 @@ class PlayerList{
         $this->pList = new SplDoublyLinkedList();
     }
 
-//    public function addPlayer($_sPlayerName, $_iPlayerScore){
-//        $pTemporary = new PlayerNode($_sPlayerName, $_iPlayerScore, null);
-//
-//        if($this->iLength == 0) {
-//            $this->pHead = $pTemporary;
-//            $this->pTail = $pTemporary;
-//        }
-//        else
-//            $this->pTail->setNext($pTemporary);
-//
-//        $this->iLength++;
-//        return;
-//    }
+    public function addPlayer($_sPlayerName){
+        $pTemporary = new PlayerNode();
+        if(is_string($_sPlayerName)) {
+            $pTemporary->setName($_sPlayerName);
+            $this->pList->push($pTemporary);
+            return true;
+        }
+        else return false;
+    }
+
+    public function getList(){
+        return($this->pList);
+    }
 
 }
