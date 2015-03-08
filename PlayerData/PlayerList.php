@@ -8,14 +8,8 @@ class PlayerList{
         $this->pList = new SplDoublyLinkedList();
     }
 
-    public function addPlayer($_sPlayerName){
-        $pTemporary = new PlayerNode();
-        if(is_string($_sPlayerName)) {
-            $pTemporary->setName($_sPlayerName);
-            $this->pList->push($pTemporary);
-            return true;
-        }
-        else return false;
+    public function addPlayer($_pPlayerNode){
+        $this->pList->push($_pPlayerNode);
     }
 
     public function getList(){
