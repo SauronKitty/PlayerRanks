@@ -217,6 +217,7 @@ class PlayerNode{
 
     // Set/get the number of times a player has killed a spitter
     public function setKillsSpitter($_iPlayerKillsSpitter){
+        $_iPlayerKillsSpitter = $this->toInt($_iPlayerKillsSpitter);
         if(is_int($_iPlayerKillsSpitter)){
             $this->iPlayerKillsSpitter = $_iPlayerKillsSpitter;
             return true;
@@ -230,6 +231,7 @@ class PlayerNode{
 
     // Set/get the number of times a player has killed a charger
     public function setKillsCharger($_iPlayerKillsCharger){
+        $_iPlayerKillsCharger = $this->toInt($_iPlayerKillsCharger);
         if(is_int($_iPlayerKillsCharger)){
             $this->iPlayerKillsCharger = $_iPlayerKillsCharger;
             return true;
@@ -243,6 +245,7 @@ class PlayerNode{
 
     // Set/get the number of times a player has killed a smoker
     public function setKillsSmoker($_iPlayerKillsSmoker){
+        $_iPlayerKillsSmoker = $this->toInt($_iPlayerKillsSmoker);
         if(is_int($_iPlayerKillsSmoker)){
             $this->iPlayerKillsSmoker = $_iPlayerKillsSmoker;
             return true;
@@ -256,6 +259,7 @@ class PlayerNode{
 
     // Set/get the number of times a player has killed a hunter
     public function setKillsHunter($_iPlayerKillsHunter){
+        $_iPlayerKillsHunter = $this->toInt($_iPlayerKillsHunter);
         if(is_int($_iPlayerKillsHunter)){
             $this->iPlayerKillsHunter = $_iPlayerKillsHunter;
             return true;
@@ -269,6 +273,7 @@ class PlayerNode{
 
     // Set/get the number of times a player has killed a jockey
     public function setKillsJockey($_iPlayerKillsJockey){
+        $_iPlayerKillsJockey = $this->toInt($_iPlayerKillsJockey);
         if(is_int($_iPlayerKillsJockey)){
             $this->iPlayerKillsJockey = $_iPlayerKillsJockey;
             return true;
@@ -282,6 +287,7 @@ class PlayerNode{
 
     // Set/get the number of times a player has killed a boomer
     public function setKillsBoomer($_iPlayerKillsBoomer){
+        $_iPlayerKillsBoomer = $this->toInt($_iPlayerKillsBoomer);
         if(is_int($_iPlayerKillsBoomer)){
             $this->iPlayerKillsBoomer = $_iPlayerKillsBoomer;
             return true;
