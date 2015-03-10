@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Loading from DB</title>
+    <title>eM Ranks | Alpha</title>
     <link rel="stylesheet" href="./Webix/codebase/webix.css" type="text/css" charset="utf-8">
     <script src="./Webix/codebase/webix.js" type="text/javascript" charset="utf-8"></script>
 </head>
@@ -14,8 +14,10 @@
                 { type:"header", template:"eM |- Ranks" },
                 { cols:[
                     {view:"datatable", autoconfig:true, url:"./data.php", columns:[
-                        { id:"PlayerName", header:"Name", width:200 },
-                        { id:"Profile", header:"GameMe", width:300 },
+                        { id:"PlayerRank", header:"Rank", width:80 },
+                        { id:"PlayerName", fillspace:true, header:"Name", width:200 },
+                        { id:"SteamId", header:"Steam", width:200 },
+                        { id:"Profile", header:"GameMe", width:80 },
                         { id:"Score", header:"Rating", width:80 }
                     ]}
                 ]}
