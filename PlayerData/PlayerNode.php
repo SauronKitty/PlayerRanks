@@ -52,11 +52,11 @@ class PlayerNode{
 
     // Set/get the player's name
     public function setName($_sPlayerName){
-        if(is_string($_sPlayerName)) {
+        //if(is_string($_sPlayerName)) {
             $this->sPlayerName = $_sPlayerName;
-            return true;
-        }
-        else return false;
+        //    return true;
+        //}
+        //else return false;
     }
 
     public function getName(){
@@ -65,12 +65,12 @@ class PlayerNode{
 
     // Set/get the total number of kills made by a player
     public function setKills($_iPlayerKills){
-        $_iPlayerKills = $this->toInt($_iPlayerKills);
-        if(is_int($_iPlayerKills)) {
+        //$_iPlayerKills = $this->toInt($_iPlayerKills);
+        //if(is_int($_iPlayerKills)) {
             $this->iPlayerKills = $_iPlayerKills;
-            return true;
-        }
-        else return false;
+        //    return true;
+        //}
+        //else return false;
     }
 
     public function getKills(){
@@ -79,12 +79,12 @@ class PlayerNode{
 
     // Set/get the total number of times a player has died
     public function setDeaths($_iPlayerDeaths){
-        $_iPlayerDeaths = $this->toInt($_iPlayerDeaths);
-        if(is_int($_iPlayerDeaths)) {
+        //$_iPlayerDeaths = $this->toInt($_iPlayerDeaths);
+        //if(is_int($_iPlayerDeaths)) {
             $this->iPlayerDeaths = $_iPlayerDeaths;
-            return true;
-        }
-        else return false;
+        //    return true;
+        //}
+        //else return false;
     }
 
     public function getDeaths(){
@@ -93,12 +93,12 @@ class PlayerNode{
 
     // Set/get a player's total playtime
     public function setPlayTime($_iPlayerTime){
-        $_iPlayerTime = $this->toInt($_iPlayerTime);
-        if(is_int($_iPlayerTime)){
+        //$_iPlayerTime = $this->toInt($_iPlayerTime);
+        //if(is_int($_iPlayerTime)){
             $this->iPlayerTime = $_iPlayerTime;
-            return true;
-        }
-        else return false;
+        //    return true;
+        //}
+        //else return false;
     }
 
     public function getPlayTime(){
@@ -107,12 +107,12 @@ class PlayerNode{
 
     // Set/get number of shots fired by a player
     public function setShots($_iPlayerShots){
-        $_iPlayerShots = $this->toInt($_iPlayerShots);
-        if(is_int($_iPlayerShots)){
+        //$_iPlayerShots = $this->toInt($_iPlayerShots);
+        //if(is_int($_iPlayerShots)){
             $this->iPlayerShots = $_iPlayerShots;
-            return true;
-        }
-        else return false;
+        //    return true;
+        //}
+        //else return false;
     }
 
     public function getShots(){
@@ -121,12 +121,12 @@ class PlayerNode{
 
     // Set/get the number of shots that actually hit a target
     public function setHits($_iPlayerHits){
-        $_iPlayerHits = $this->toInt($_iPlayerHits);
-        if(is_int($_iPlayerHits)){
+        //$_iPlayerHits = $this->toInt($_iPlayerHits);
+        //if(is_int($_iPlayerHits)){
             $this->iPlayerHits = $_iPlayerHits;
-            return true;
-        }
-        return false;
+        //    return true;
+        //}
+        //return false;
     }
 
     public function getHits(){
@@ -135,12 +135,12 @@ class PlayerNode{
 
     // Set/get the number of headshots made by a player
     public function setHeadshots($_iPlayerHeadshots){
-        $_iPlayerHeadshots = $this->toInt($_iPlayerHeadshots);
-        if(is_int($_iPlayerHeadshots)){
+        //$_iPlayerHeadshots = $this->toInt($_iPlayerHeadshots);
+        //if(is_int($_iPlayerHeadshots)){
             $this->iPlayerHeadshots = $_iPlayerHeadshots;
-            return true;
-        }
-        else return false;
+        //    return true;
+        //}
+        //else return false;
     }
 
     public function getHeadshots(){
@@ -149,12 +149,12 @@ class PlayerNode{
 
     // Set/get the number of times a player has hurt a member of their team
     public function setFriendlyFire($_iPlayerFriendlyFire){
-        $_iPlayerFriendlyFire = $this->toInt($_iPlayerFriendlyFire);
-        if(is_int($_iPlayerFriendlyFire)){
+        //$_iPlayerFriendlyFire = $this->toInt($_iPlayerFriendlyFire);
+        //if(is_int($_iPlayerFriendlyFire)){
             $this->iPlayerFriendlyFire = $_iPlayerFriendlyFire;
-            return true;
-        }
-        else return false;
+        //    return true;
+        //}
+        //else return false;
     }
 
     public function getFriendlyFire(){
@@ -177,12 +177,12 @@ class PlayerNode{
 
     // Set/get the number of times a player has healed a team member
     public function setTeamHeals($_iPlayerTeamHeals){
-        $_iPlayerTeamHeals = $this->toInt($_iPlayerTeamHeals);
-        if(is_int($_iPlayerTeamHeals)){
+        //$_iPlayerTeamHeals = $this->toInt($_iPlayerTeamHeals);
+        //if(is_int($_iPlayerTeamHeals)){
             $this->iPlayerTeamHeals = $_iPlayerTeamHeals;
-            return true;
-        }
-        else return false;
+        //    return true;
+        //}
+        //else return false;
     }
 
     public function getTeamHeals(){
@@ -191,12 +191,12 @@ class PlayerNode{
 
     // Set/get the number of times a player has defibed a team member
     public function setTeamDefibs($_iPlayerTeamDefibs){
-        $_iPlayerTeamDefibs = $this->toInt($_iPlayerTeamDefibs);
-        if(is_int($_iPlayerTeamDefibs)){
+        //$_iPlayerTeamDefibs = $this->toInt($_iPlayerTeamDefibs);
+        //if(is_int($_iPlayerTeamDefibs)){
             $this->iPlayerTeamDefibs = $_iPlayerTeamDefibs;
-            return true;
-        }
-        else return false;
+        //    return true;
+        //}
+        //else return false;
     }
 
     public function getTeamDefibs(){
@@ -205,12 +205,12 @@ class PlayerNode{
 
     // Set/get the number of times a player has revived an incapacitated team member
     public function setTeamRevives($_iPlayerTeamRevives){
-        $_iPlayerTeamRevives = $this->toInt($_iPlayerTeamRevives);
-        if(is_int($_iPlayerTeamRevives)){
+        //$_iPlayerTeamRevives = $this->toInt($_iPlayerTeamRevives);
+        //if(is_int($_iPlayerTeamRevives)){
             $this->iPlayerTeamRevives = $_iPlayerTeamRevives;
-            return true;
-        }
-        else return false;
+        //    return true;
+        //}
+        //else return false;
     }
 
     public function getTeamRevives(){
@@ -219,12 +219,12 @@ class PlayerNode{
 
     // Set/get the number of times a player has killed a spitter
     public function setKillsSpitter($_iPlayerKillsSpitter){
-        $_iPlayerKillsSpitter = $this->toInt($_iPlayerKillsSpitter);
-        if(is_int($_iPlayerKillsSpitter)){
+        //$_iPlayerKillsSpitter = $this->toInt($_iPlayerKillsSpitter);
+        //if(is_int($_iPlayerKillsSpitter)){
             $this->iPlayerKillsSpitter = $_iPlayerKillsSpitter;
-            return true;
-        }
-        else return false;
+        //    return true;
+        //}
+        //else return false;
     }
 
     public function getKillsSpitter(){
@@ -233,12 +233,12 @@ class PlayerNode{
 
     // Set/get the number of times a player has killed a charger
     public function setKillsCharger($_iPlayerKillsCharger){
-        $_iPlayerKillsCharger = $this->toInt($_iPlayerKillsCharger);
-        if(is_int($_iPlayerKillsCharger)){
+        //$_iPlayerKillsCharger = $this->toInt($_iPlayerKillsCharger);
+        //if(is_int($_iPlayerKillsCharger)){
             $this->iPlayerKillsCharger = $_iPlayerKillsCharger;
-            return true;
-        }
-        else return false;
+        //    return true;
+        //}
+        //else return false;
     }
 
     public function getKillsCharger(){
@@ -247,12 +247,12 @@ class PlayerNode{
 
     // Set/get the number of times a player has killed a smoker
     public function setKillsSmoker($_iPlayerKillsSmoker){
-        $_iPlayerKillsSmoker = $this->toInt($_iPlayerKillsSmoker);
-        if(is_int($_iPlayerKillsSmoker)){
+        //$_iPlayerKillsSmoker = $this->toInt($_iPlayerKillsSmoker);
+        //if(is_int($_iPlayerKillsSmoker)){
             $this->iPlayerKillsSmoker = $_iPlayerKillsSmoker;
-            return true;
-        }
-        else return false;
+        //    return true;
+        //}
+        //else return false;
     }
 
     public function getKillsSmoker(){
@@ -261,12 +261,12 @@ class PlayerNode{
 
     // Set/get the number of times a player has killed a hunter
     public function setKillsHunter($_iPlayerKillsHunter){
-        $_iPlayerKillsHunter = $this->toInt($_iPlayerKillsHunter);
-        if(is_int($_iPlayerKillsHunter)){
+        //$_iPlayerKillsHunter = $this->toInt($_iPlayerKillsHunter);
+        //if(is_int($_iPlayerKillsHunter)){
             $this->iPlayerKillsHunter = $_iPlayerKillsHunter;
-            return true;
-        }
-        else return false;
+        //    return true;
+        //}
+        //else return false;
     }
 
     public function getKillsHunter(){
@@ -275,12 +275,12 @@ class PlayerNode{
 
     // Set/get the number of times a player has killed a jockey
     public function setKillsJockey($_iPlayerKillsJockey){
-        $_iPlayerKillsJockey = $this->toInt($_iPlayerKillsJockey);
-        if(is_int($_iPlayerKillsJockey)){
+        //$_iPlayerKillsJockey = $this->toInt($_iPlayerKillsJockey);
+        //if(is_int($_iPlayerKillsJockey)){
             $this->iPlayerKillsJockey = $_iPlayerKillsJockey;
-            return true;
-        }
-        else return false;
+        //    return true;
+        //}
+        //else return false;
     }
 
     public function getKillsJockey(){
@@ -289,12 +289,12 @@ class PlayerNode{
 
     // Set/get the number of times a player has killed a boomer
     public function setKillsBoomer($_iPlayerKillsBoomer){
-        $_iPlayerKillsBoomer = $this->toInt($_iPlayerKillsBoomer);
-        if(is_int($_iPlayerKillsBoomer)){
+        //$_iPlayerKillsBoomer = $this->toInt($_iPlayerKillsBoomer);
+        //if(is_int($_iPlayerKillsBoomer)){
             $this->iPlayerKillsBoomer = $_iPlayerKillsBoomer;
-            return true;
-        }
-        else return false;
+        //    return true;
+        //}
+        //else return false;
     }
 
     public function getKillsBoomer(){
@@ -303,12 +303,12 @@ class PlayerNode{
 
     // Set/get the player's score
     public function setPlayerScore($_iPlayerScore){
-        $_iPlayerScore = $this->toInt($_iPlayerScore);
-        if(is_int($_iPlayerScore)) {
+        //$_iPlayerScore = $this->toInt($_iPlayerScore);
+        //if(is_int($_iPlayerScore)) {
             $this->iPlayerScore = $_iPlayerScore;
-            return true;
-        }
-        else return false;
+        //    return true;
+        //}
+        //else return false;
     }
 
     public function getPlayerScore(){
