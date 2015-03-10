@@ -1,15 +1,15 @@
 <?php
 class PlayerManager {
     private $hDatabase;
-    private $pPlayerList;
+    private $pPlayerQueue;
 
     public function __construct(){
         $this->hDatabase = new Database("./Raw/playerranks.db");
-        $this->pPlayerList = new PlayerList();
-        $this->populateList();
+        $this->pPlayerQueue = new PlayerList();
+        $this->populateQueue();
     }
 
-    private function populateList(){
+    private function populateQueue(){
         $hResponse = $this->hDatabase->execQuery("SELECT * From Players");
         foreach($hResponse as $hRow){
             $hPlayerNode = new PlayerNode();
@@ -33,11 +33,15 @@ class PlayerManager {
             $hPlayerNode->setKillsJockey($hRow['PlayerKillsJockey']);
             $hPlayerNode->setKillsBoomer($hRow['PlayerKillsBoomer']);
 
-            $this->pPlayerList->addPlayer($hPlayerNode);
+            $hScoreManager = new ScoreManager($hPlayerNode);
+            $iPlayerScore = $hScoreManager->getScore();
+            $hPlayerNode->setPlayerScore($iPlayerScore);
+
+            $this->pPlayerQueue->addPlayer($hPlayerNode, $iPlayerScore);
         }
     }
 
-    public function getList(){
-        return($this->pPlayerList->getList());
+    public function getQueue(){
+        return($this->pPlayerQueue->getQueue());
     }
 }
