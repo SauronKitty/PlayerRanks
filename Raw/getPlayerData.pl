@@ -55,7 +55,8 @@ sub pushRow(){
 	my $iPlayerKills = &getPlayerKills($hPlayerData);
 	my $iPlayerDeaths = &getPlayerDeaths($hPlayerData);
 
-	$sPlayerName =~ tr/'//d;
+    print $sPlayerName."\n";
+	$sPlayerName =~ tr/'*;,//d;
 
 	my $hStatement = $hDatabase->prepare(
 			"INSERT INTO Players (
@@ -140,7 +141,7 @@ sub createTables(){
 # Player List
 
 sub getPlayerList(){
-	my $sData = get "http://evilmania.gameme.com/api/playerlist/l4dii2?limit=100";
+	my $sData = get "http://evilmania.gameme.com/api/playerlist/l4dii2?limit=150";
 	$sData =~ s/([^[:ascii:]]+)/unidecode($1)/ge;
 
 	my $hXML = XML::Simple->new();
