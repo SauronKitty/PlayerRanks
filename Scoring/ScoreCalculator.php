@@ -4,7 +4,7 @@ class ScoreCalculator {
     private $pPlayer;
     private $iPlayerScore;
 
-    public function __construct(PlayerNode &$gma_pPlayer){
+    public function __construct(PlayerNode &$_pPlayer){
         $this->setPlayer($_pPlayer);
         $this->calculateScore();
         $_pPlayer->setPlayerScore($this->getScore());
