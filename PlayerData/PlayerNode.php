@@ -21,6 +21,8 @@ class PlayerNode{
     private $iPlayerKillsJockey;
     private $iPlayerKillsBoomer;
 
+    private $iPlayerScore;
+
     private $pNext;
 
     public function __construct(){
@@ -297,6 +299,20 @@ class PlayerNode{
 
     public function getKillsBoomer(){
         return($this->iPlayerKillsBoomer);
+    }
+
+    // Set/get the player's score
+    public function setPlayerScore($_iPlayerScore){
+        $_iPlayerScore = $this->toInt($_iPlayerScore);
+        if(is_int($_iPlayerScore)) {
+            $this->iPlayerScore = $_iPlayerScore;
+            return true;
+        }
+        else return false;
+    }
+
+    public function getPlayerScore(){
+        return($this->iPlayerScore);
     }
 
     // Set/get the next node
