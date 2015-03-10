@@ -16,6 +16,8 @@ class PlayerManager {
 
             // Parse each database row into a PlayerNode
             $hPlayerNode->setName($hRow['PlayerName']);
+            $hPlayerNode->setSteamId($hRow['PlayerSteam']);
+            $hPlayerNode->setGameMeId($hRow['PlayerId']);
             $hPlayerNode->setKills($hRow['PlayerKills']);
             $hPlayerNode->setDeaths($hRow['PlayerDeaths']);
             $hPlayerNode->setPlayTime($hRow['PlayerTime']);

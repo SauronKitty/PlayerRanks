@@ -6,7 +6,7 @@ use LWP::Simple;
 use DBI;
 
 use utf8;
-use Text::Unidecode;
+#use Text::Unidecode;
 
 &main();
 
@@ -27,6 +27,8 @@ sub pushRow(){
 	my($hPlayerData, $hDatabase) = @_;
 
 	my $sPlayerName         = &getPlayerName($hPlayerData);
+	my $sPlayerSteamId      = &getPlayerSteamId($hPlayerData);
+	my $iPlayerId           = &getPlayerId($hPlayerData);
 	my $iSpitterKills       = &getPlayerSpitterKills($hPlayerData);
 	my $iChargerKills       = &getPlayerChargerKills($hPlayerData);
 	my $iSmokerKills        = &getPlayerSmokerKills($hPlayerData);
@@ -48,6 +50,8 @@ sub pushRow(){
 	my $hStatement = $hDatabase->prepare(
 			qq(INSERT INTO Players (
 				PlayerName,
+				PlayerSteam,
+				PlayerId,
 				PlayerKills,
 				PlayerDeaths,
 				PlayerTime,
@@ -83,10 +87,12 @@ sub pushRow(){
 				?,
 				?,
 				?,
+				?,
+				?,
 				?)));
-		$hStatement->execute($sPlayerName, $iPlayerKills, $iPlayerDeaths, $iPlayerPlayTime, $iPlayerShots, $iPlayerHits,
-		$iPlayerHeadshots, $iPlayerFriendlyFire, $iPlayerProtects, $iPlayerHeals, $iPlayerDefibs, $iPlayerRevives,
-		$iSpitterKills, $iChargerKills, $iSmokerKills, $iHunterKills, $iJockeyKills, $iBoomerKills);
+		$hStatement->execute($sPlayerName, $sPlayerSteamId, $iPlayerId, $iPlayerKills, $iPlayerDeaths, $iPlayerPlayTime,
+		$iPlayerShots, $iPlayerHits, $iPlayerHeadshots, $iPlayerFriendlyFire, $iPlayerProtects, $iPlayerHeals, $iPlayerDefibs,
+		$iPlayerRevives, $iSpitterKills, $iChargerKills, $iSmokerKills, $iHunterKills, $iJockeyKills, $iBoomerKills);
 		return;
 }
 
@@ -106,6 +112,8 @@ sub createTables(){
 	my $hStatement = $hDatbase->prepare("CREATE TABLE Players
 	(
 		PlayerName varchar(250),
+		PlayerSteam varchar(250),
+		PlayerId int,
 		PlayerKills int,
 		PlayerDeaths int,
 		PlayerTime int,
@@ -131,7 +139,6 @@ sub createTables(){
 
 sub getPlayerList(){
 	my $sData = get "http://evilmania.gameme.com/api/playerlist/l4dii2?limit=150";
-	$sData =~ s/([^[:ascii:]]+)/unidecode($1)/ge;
 
 	my $hXML = XML::Simple->new();
 	my $hashRefrence = $hXML->XMLin($sData, KeyAttr => {player => 'uniqueid'});
@@ -151,6 +158,16 @@ sub getPlayerData(){
 	my $hashRefrence = $hXML->XMLin($sData, KeyAttr => {action => 'code'});
 
 	return($hashRefrence)
+}
+
+sub getPlayerId(){
+    my ($hPlayerData) = @_;
+    return($hPlayerData->{'playerinfo'}->{'player'}->{'id'});
+}
+
+sub getPlayerSteamId(){
+    my ($hPlayerData) = @_;
+    return($hPlayerData->{'playerinfo'}->{'player'}->{'uniqueid'});
 }
 
 sub getPlayerName(){

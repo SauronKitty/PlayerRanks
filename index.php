@@ -29,16 +29,22 @@ function printPlayerRanks(){
     print("<thead><tr><th>Position</th><th>Name</th><th>Score</th></tr></thead><tbody>");
     while ($hPlayerQueue->valid()) {
         $sPlayerName = $hPlayerQueue->current()->getName();
+        $sProfileLink = getGameMeLink($hPlayerQueue->current()->getGameMeId());
         $iPlayerScore = $hPlayerQueue->current()->getPlayerScore();
+
         print("<tr>");
         print("<td>$iCounter</td>");
-        print("<td>$sPlayerName</td>");
+        print("<td><a href=\"$sProfileLink\">$sPlayerName</a></td>");
         print("<td>$iPlayerScore</td>");
         print("</tr>");
         $hPlayerQueue->next();
         $iCounter++;
     }
     print("</tbody></table></body></html>");
+}
+
+function getGameMeLink($_iPlayerGameMeId){
+    return("http://evilmania.gameme.com/playerinfo/".$_iPlayerGameMeId);
 }
 
 function printExecTime($_iTimeStart){

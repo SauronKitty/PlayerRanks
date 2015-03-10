@@ -3,6 +3,8 @@
 class PlayerNode{
     // Player Data
     private $sPlayerName;
+    private $sPlayerSteamId;
+    private $iPlayerGameMeId;
     private $iPlayerKills;
     private $iPlayerDeaths;
     private $iPlayerTime;
@@ -25,6 +27,8 @@ class PlayerNode{
 
     public function __construct(){
         $this->setName(null);
+        $this->setSteamId(null);
+        $this->setGameMeId(0);
         $this->setKills(0);
         $this->setDeaths(0);
         $this->setPlayTime(0);
@@ -52,6 +56,24 @@ class PlayerNode{
 
     public function getName(){
         return($this->sPlayerName);
+    }
+
+    // Set/get the player's Steam ID
+    public function setSteamId($_sPlayerSteamId){
+        $this->sPlayerSteamId = $_sPlayerSteamId;
+    }
+
+    public function getSteamId(){
+        return($this->sPlayerSteamId);
+    }
+
+    // Set/get the player's GameMe ID
+    public function setGameMeId($_iPlayerGameMeId){
+        $this->iPlayerGameMeId = $_iPlayerGameMeId;
+    }
+
+    public function getGameMeId(){
+        return($this->iPlayerGameMeId);
     }
 
     // Set/get the total number of kills made by a player
