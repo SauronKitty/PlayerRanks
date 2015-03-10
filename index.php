@@ -2,12 +2,13 @@
 $iTimeStart = microtime(true);
 
 require("./Managers/SettingsManager.php");
-
 $hSettingsManager = new SettingsManager();
-require($hSettingsManager->getConfig('dir_database_database'));
-require($hSettingsManager->getConfig('dir_managers_player'));
+
+require($hSettingsManager->getConfig('dir_playerdata_node'));
 require($hSettingsManager->getConfig('dir_playerdata_list'));
+require($hSettingsManager->getConfig('dir_database_database'));
 require($hSettingsManager->getConfig('dir_scoring_manager'));
+require($hSettingsManager->getConfig('dir_managers_player'));
 
 // Begin
 

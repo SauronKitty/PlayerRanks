@@ -1,19 +1,20 @@
 <?php
+
 class PlayerManager {
-    private $hDatabase;
     private $pPlayerQueue;
 
     public function __construct(){
-        $this->hDatabase = new Database("./Raw/playerranks.db");
-        $this->pPlayerQueue = new PlayerList();
-        $this->populateQueue();
+        $hDatabase = new Database("./Raw/playerranks.db");
+        $this->pPlayerQueue = new PlayerQueue();
+        $this->populateQueue($hDatabase);
     }
 
-    private function populateQueue(){
-        $hResponse = $this->hDatabase->execQuery("SELECT * From Players");
+    private function populateQueue(Database &$_hDatabase){
+        $hResponse = $_hDatabase->execQuery("SELECT * From Players");
         foreach($hResponse as $hRow){
             $hPlayerNode = new PlayerNode();
 
+            // Parse each database row into a PlayerNode
             $hPlayerNode->setName($hRow['PlayerName']);
             $hPlayerNode->setKills($hRow['PlayerKills']);
             $hPlayerNode->setDeaths($hRow['PlayerDeaths']);
@@ -33,15 +34,17 @@ class PlayerManager {
             $hPlayerNode->setKillsJockey($hRow['PlayerKillsJockey']);
             $hPlayerNode->setKillsBoomer($hRow['PlayerKillsBoomer']);
 
-            $hScoreManager = new ScoreManager($hPlayerNode);
-            $iPlayerScore = $hScoreManager->getScore();
-            $hPlayerNode->setPlayerScore($iPlayerScore);
-
-            $this->pPlayerQueue->addPlayer($hPlayerNode, $iPlayerScore);
+            // ScoreCalculator will take the $hPlayerNode by refrence and automatically calculate the score
+            // based on the data passed earlier. ScoreCalculator will automatically also call the
+            // $hPlayerNode->setPlayerScore() and update the node's score
+            new ScoreCalculator($hPlayerNode);
+            // Insert $hPlayerNode into the PriorityQueue with the calculated score as the Node's priority
+            $this->pPlayerQueue->addPlayer($hPlayerNode, $hPlayerNode->getPlayerScore());
         }
     }
 
     public function getQueue(){
-        return($this->pPlayerQueue->getQueue());
+        $hQueueRefrence = &$this->pPlayerQueue->getQueue();
+        return($hQueueRefrence);
     }
 }

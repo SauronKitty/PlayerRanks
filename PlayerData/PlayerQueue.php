@@ -1,14 +1,13 @@
 <?php
-require("PlayerNode.php");
 
-class PlayerList{
+class PlayerQueue{
     private $pQueue;
 
     public function __construct(){
         $this->pQueue = new SplPriorityQueue();
     }
 
-    public function addPlayer($_pPlayerNode, $_iPlayerScore){
+    public function addPlayer(&$_pPlayerNode, $_iPlayerScore){
         $this->pQueue->insert($_pPlayerNode, $_iPlayerScore);
     }
 

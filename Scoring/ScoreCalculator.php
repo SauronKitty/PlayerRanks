@@ -1,15 +1,16 @@
 <?php
 
-class ScoreManager {
+class ScoreCalculator {
     private $pPlayer;
     private $iPlayerScore;
 
-    public function __construct(PlayerNode $_pPlayer){
+    public function __construct(PlayerNode &$gma_pPlayer){
         $this->setPlayer($_pPlayer);
         $this->calculateScore();
+        $_pPlayer->setPlayerScore($this->getScore());
     }
 
-    public function setPlayer(PlayerNode $_pPlayer){
+    public function setPlayer(PlayerNode &$_pPlayer){
         $this->pPlayer = $_pPlayer;
     }
 

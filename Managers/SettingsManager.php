@@ -8,9 +8,9 @@ class SettingsManager {
         $this->aSettings['dir_database_database']   = "./Database/Database.php";
         $this->aSettings['dir_managers_player']     = "./Managers/PlayerManager.php";
         $this->aSettings['dir_managers_settings']   = "./Managers/SettingsManager.php";
-        $this->aSettings['dir_playerdata_list']     = "./PlayerData/PlayerList.php";
+        $this->aSettings['dir_playerdata_list']     = "./PlayerData/PlayerQueue.php";
         $this->aSettings['dir_playerdata_node']     = "./PlayerData/PlayerNode.php";
-        $this->aSettings['dir_scoring_manager']     = "./Scoring/ScoreManager.php";
+        $this->aSettings['dir_scoring_manager']     = "./Scoring/ScoreCalculator.php";
     }
 
     public function getConfig($_sSetting){
