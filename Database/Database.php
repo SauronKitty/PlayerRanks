@@ -31,5 +31,6 @@ class Database{
         catch(PDOException $eError){
             echo $eError->getMessage();
         }
+        return;
     }
 }
