@@ -10,6 +10,7 @@ class SettingsManager {
         $this->aSettings['dir_managers_settings']   = "./Managers/SettingsManager.php";
         $this->aSettings['dir_playerdata_list']     = "./PlayerData/PlayerList.php";
         $this->aSettings['dir_playerdata_node']     = "./PlayerData/PlayerNode.php";
+        $this->aSettings['dir_scoring_manager']     = "./Scoring/ScoreManager.php";
     }
 
     public function getConfig($_sSetting){
