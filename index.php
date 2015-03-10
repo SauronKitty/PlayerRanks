@@ -11,18 +11,37 @@ require($hSettingsManager->getConfig('dir_scoring_manager'));
 
 // Begin
 
-$hPlayerManager = new PlayerManager();
-$hPlayerQueue = $hPlayerManager->getQueue();
+main($iTimeStart);
 
-$iCounter = 1;
-header('Content-Type: text/html; charset=utf-8');
-while($hPlayerQueue->valid()){
-    print"$iCounter - Name: ".$hPlayerQueue->current()->getName()." | Score: ".$hPlayerQueue->current()->getPlayerScore()."<br>\n";
-    $hPlayerQueue->next();
-    $iCounter++;
+function main($_iTimeStart){
+    printPlayerRanks();
+    printExecTime($_iTimeStart);
 }
 
-$iTimeEnd = microtime(true);
+function printPlayerRanks(){
+    $hPlayerManager = new PlayerManager();
+    $hPlayerQueue = $hPlayerManager->getQueue();
 
-$iTimeExec = ($iTimeEnd - $iTimeStart);
-echo "$iTimeExec\n";
+    $iCounter = 1;
+    header('Content-Type: text/html; charset=utf-8');
+    print("<html><head><title>Ranks (Alpha)</title></head><body><table>");
+    print("<thead><tr><th>Position</th><th>Name</th><th>Score</th></tr></thead><tbody>");
+    while ($hPlayerQueue->valid()) {
+        $sPlayerName = $hPlayerQueue->current()->getName();
+        $iPlayerScore = $hPlayerQueue->current()->getPlayerScore();
+        print("<tr>");
+        print("<td>$iCounter</td>");
+        print("<td>$sPlayerName</td>");
+        print("<td>$iPlayerScore</td>");
+        print("</tr>");
+        $hPlayerQueue->next();
+        $iCounter++;
+    }
+    print("</tbody></table></body></html>");
+}
+
+function printExecTime($_iTimeStart){
+    $iTimeEnd = microtime(true);
+    $iTimeExec = ($iTimeEnd - $_iTimeStart);
+    print "<hr><center>$iTimeExec</center>\n";
+}
