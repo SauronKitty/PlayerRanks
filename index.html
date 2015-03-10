@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loading from DB</title>
+    <link rel="stylesheet" href="./Webix/codebase/webix.css" type="text/css" charset="utf-8">
+    <script src="./Webix/codebase/webix.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+
+<script type="text/javascript" charset="utf-8">
+    webix.ready(function(){
+        grida = webix.ui({
+            rows:[
+                { type:"header", template:"eM |- Ranks" },
+                { cols:[
+                    {view:"datatable", autoconfig:true, url:"./data.php", columns:[
+                        { id:"PlayerName", header:"Name", width:200 },
+                        { id:"Profile", header:"GameMe", width:300 },
+                        { id:"Score", header:"Rating", width:80 }
+                    ]}
+                ]}
+            ]
+        });
+    });
+</script>
+</body>
+</html>
