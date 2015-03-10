@@ -1,5 +1,5 @@
 <?php
-$iTimeStart = microtime(true);
+//$iTimeStart = microtime(true);
 
 require("./Managers/SettingsManager.php");
 $hSettingsManager = new SettingsManager();
@@ -12,11 +12,11 @@ require($hSettingsManager->getConfig('dir_managers_player'));
 
 // Begin
 
-main();
+main($iTimeStart);
 
-function main(){
+function main($_iTimeStart){
     printPlayerRanks();
-    //printExecTime($_iTimeStart);
+    //fwrite(STDOUT, $_iTimeStart - microtime(true));
 }
 
 function printPlayerRanks(){
@@ -29,8 +29,10 @@ function printPlayerRanks(){
     $aDataArray = array();
     while ($hPlayerQueue->valid()) {
         $aPlayerData = array(
+            'PlayerRank'    => $iCounter,
             'PlayerName'    => $hPlayerQueue->current()->getName(),
-            'Profile'       => getGameMeLink($hPlayerQueue->current()->getGameMeId()),
+            'SteamId'       => $hPlayerQueue->current()->getSteamId(),
+            'Profile'       => "<a href=\"".getGameMeLink($hPlayerQueue->current()->getGameMeId())."\">Stats</a>",
             'Score'         => $hPlayerQueue->current()->getPlayerScore(),
         );
 
