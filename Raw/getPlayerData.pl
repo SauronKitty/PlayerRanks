@@ -138,7 +138,7 @@ sub createTables(){
 # Player List
 
 sub getPlayerList(){
-	my $sData = get "http://evilmania.gameme.com/api/playerlist/l4dii2?limit=150";
+	my $sData = get "http://evilmania.gameme.com/api/playerlist/l4dii2?limit=250";
 
 	my $hXML = XML::Simple->new();
 	my $hashRefrence = $hXML->XMLin($sData, KeyAttr => {player => 'uniqueid'});
