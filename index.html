@@ -15,11 +15,14 @@
                 { cols:[
                     {view:"datatable", autoconfig:true, url:"./data.php", columns:[
                         { id:"PlayerRank", header:"Rank", width:80 },
-                        { id:"PlayerName", fillspace:true, header:"Name", width:200 },
-                        { id:"SteamId", header:"Steam", width:200 },
+                        { id:"PlayerName", fillspace:true, header:["Name", { content:"textFilter" }], width:200 },
+                        { id:"SteamId", header:["Steam", { content:"textFilter" }], width:200 },
                         { id:"Profile", header:"GameMe", width:80 },
                         { id:"Score", header:"Rating", width:80 }
-                    ]}
+                    ], select:"row", navigation:true, ready:function(){
+                        this.select(this.getFirstId());
+                    }
+                    }
                 ]}
             ]
         });
