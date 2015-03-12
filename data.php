@@ -1,6 +1,4 @@
 <?php
-//$iTimeStart = microtime(true);
-
 require("./Managers/SettingsManager.php");
 $hSettingsManager = new SettingsManager();
 
@@ -12,15 +10,15 @@ require($hSettingsManager->getConfig('dir_managers_player'));
 
 // Begin
 
-main($iTimeStart);
+main();
 
-function main($_iTimeStart){
+function main(){
     printPlayerRanks();
-    //fwrite(STDOUT, $_iTimeStart - microtime(true));
 }
 
 function printPlayerRanks(){
     $hPlayerManager = new PlayerManager();
+    $hPlayerManager->populateQueue();
     $hPlayerQueue = $hPlayerManager->getQueue();
 
     $iCounter = 1;
