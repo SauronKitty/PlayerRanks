@@ -5,7 +5,8 @@ class PlayerManager {
     private $hDatabase;
 
     public function __construct(){
-        $this->hDatabase = new Database("./Raw/playerranks.db");
+        $this->pPlayerQueue = null;
+        $this->hDatabase = new Database("../Raw/playerranks.db");
     }
 
     public function populateQueue(){
@@ -29,6 +30,23 @@ class PlayerManager {
         //return null;
     }
 
+    public function getPlayerBySteamId($_sPlayerGameMeId){
+        $hResponse = $this->hDatabase->getDatabase()->prepare("SELECT * FROM Players WHERE PlayerId=?");
+        $hResponse->execute(array($_sPlayerGameMeId));
+
+        $hResponse = $hResponse->fetch(0);
+        return($this->loadPlayer($hResponse));
+    }
+
+    public function getPlayerByGameMeId($_sPlayerGameMeId){
+        $hResponse = $this->hDatabase->getDatabase()->prepare("SELECT * FROM Players WHERE PlayerSteam=?");
+        $hResponse->execute(array($_sPlayerGameMeId));
+
+        $hResponse = $hResponse->fetch(0);
+        return($this->loadPlayer($hResponse));
+    }
+
+    // Load player data into a PlayerNode and a return a reference to that node
     private function &loadPlayer(&$_hRow){
         $hPlayerNode = new PlayerNode();
 

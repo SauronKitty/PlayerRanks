@@ -1,5 +1,5 @@
 <?php
-require("./Managers/SettingsManager.php");
+require("../Managers/SettingsManager.php");
 $hSettingsManager = new SettingsManager();
 
 require($hSettingsManager->getConfig('dir_playerdata_node'));
@@ -18,7 +18,7 @@ function main(){
 
 function printPlayerRanks(){
     $hPlayerManager = new PlayerManager();
-    $hPlayerManager->populateQueue();
+    $hPlayerManager->populateQueue(); // Load entire database
     $hPlayerQueue = $hPlayerManager->getQueue();
 
     $iCounter = 1;
@@ -26,19 +26,22 @@ function printPlayerRanks(){
 
     $aDataArray = array();
     while ($hPlayerQueue->valid()) {
-        $aPlayerData = array(
-            'PlayerRank'    => $iCounter,
-            'PlayerName'    => $hPlayerQueue->current()->getName(),
-            'SteamId'       => $hPlayerQueue->current()->getSteamId(),
-            'Profile'       => "<a href=\"".getGameMeLink($hPlayerQueue->current()->getGameMeId())."\">Stats</a>",
-            'Score'         => $hPlayerQueue->current()->getPlayerScore(),
-        );
-
-        array_push($aDataArray, $aPlayerData);
+        array_push($aDataArray, parseData($iCounter, $hPlayerQueue->current()));
         $hPlayerQueue->next();
         $iCounter++;
     }
-     echo json_encode($aDataArray);
+    echo json_encode($aDataArray);
+}
+
+function &parseData($_iPlayerRank, PlayerNode &$_pPlayerNode){
+    $aPlayerData = array(
+        'PlayerRank'    => $_iPlayerRank,
+        'PlayerName'    => $_pPlayerNode->getName(),
+        'SteamId'       => $_pPlayerNode->getSteamId(),
+        'Profile'       => "<a href=\"".getGameMeLink($_pPlayerNode->getGameMeId())."\">Stats</a>",
+        'Score'         => $_pPlayerNode->getPlayerScore()
+    );
+    return($aPlayerData);
 }
 
 function getGameMeLink($_iPlayerGameMeId){
