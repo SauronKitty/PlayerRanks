@@ -15,9 +15,9 @@
             rows:[
                 { type:"header", template:"eM |- Ranks" },
                 { cols:[
-                    {view:"datatable", autoconfig:true, url:"./data.php", columns:[
+                    {view:"datatable", autoconfig:true, url:"./Api/getPlayerRanks.php", columns:[
                         { id:"PlayerRank", header:"Rank", width:80 },
-                        { id:"PlayerName", fillspace:true, header:["Name", { content:"textFilter" }], width:200 },
+                        { id:"PlayerName", fillspace:true, header:["Name", { content:"textFilter" }] },
                         { id:"SteamId", header:["Steam", { content:"textFilter" }], width:200 },
                         { id:"Profile", header:"GameMe", width:80 },
                         { id:"Score", header:"Rating", width:80 }

@@ -4,9 +4,7 @@ use XML::Simple;
 use LWP::Simple;
 
 use DBI;
-
 use utf8;
-#use Text::Unidecode;
 
 &main();
 
@@ -21,6 +19,7 @@ sub main(){
 	}
 
 	&disconnectFromDatabase($hDatabase);
+	print("Complete");
 }
 
 sub pushRow(){
@@ -103,14 +102,21 @@ sub connectToDatabase(){
 }
 
 sub disconnectFromDatabase(){
-	my ($hDatbase) = @_;
+	my ($hDatabase) = @_;
 	$hDatabase->disconnect();
 }
 
 sub createTables(){
-	my ($hDatbase) = @_;
-	my $hStatement = $hDatbase->prepare("CREATE TABLE Players
-	(
+	my ($hDatabase) = @_;
+	createPlayersTable($hDatabase);
+	#createSettingsTable($hDatabase);
+	return;
+}
+
+sub createPlayersTable(){
+    my ($hDatabase) = @_;
+	my $hStatement = $hDatabase->prepare(
+	qq(CREATE TABLE Players(
 		PlayerName varchar(250),
 		PlayerSteam varchar(250),
 		PlayerId int,
@@ -130,9 +136,10 @@ sub createTables(){
 		PlayerKillsSmoker int,
 		PlayerKillsHunter int,
 		PlayerKillsJockey int,
-		PlayerKillsBoomer int 
-		);");
+		PlayerKillsBoomer int
+		)));
 	$hStatement->execute();
+    return;
 }
 
 # Player List
@@ -141,9 +148,9 @@ sub getPlayerList(){
 	my $sData = get "http://evilmania.gameme.com/api/playerlist/l4dii2?limit=250";
 
 	my $hXML = XML::Simple->new();
-	my $hashRefrence = $hXML->XMLin($sData, KeyAttr => {player => 'uniqueid'});
+	my $hashReference = $hXML->XMLin($sData, KeyAttr => {player => 'uniqueid'});
 
-	return($hashRefrence)
+	return($hashReference)
 }
 
 # Player Data
@@ -155,9 +162,9 @@ sub getPlayerData(){
 	$sData =~ s/\<awards\>.*\<\/awards\>//ig;
 
 	my $hXML = XML::Simple->new();
-	my $hashRefrence = $hXML->XMLin($sData, KeyAttr => {action => 'code'});
+	my $hashReference = $hXML->XMLin($sData, KeyAttr => {action => 'code'});
 
-	return($hashRefrence)
+	return($hashReference)
 }
 
 sub getPlayerId(){
@@ -259,13 +266,6 @@ sub getPlayerAction_Heal(){
 sub getPlayerAction_Revive(){
  	my ($hPlayerData) = @_;
  	return($hPlayerData->{'playerinfo'}->{'player'}->{'actions'}->{'action'}->{'revived_teammate'}->{'achieved'});
-}
-
-# Generate Scores
-
-sub generateSIKillsScore(){
-	my ($hPlayerData) = @_;
-	return((&calcTotalSIKills($hPlayerData)/&secondsToMinutes(&getPlayerTime($hPlayerData)))*500);
 }
 
 # Other

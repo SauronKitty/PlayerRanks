@@ -16,5 +16,4 @@ class PlayerQueue{
         $pPlayerQueue->top();
         return($pPlayerQueue);
     }
-
 }
